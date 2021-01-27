@@ -1,0 +1,51 @@
+HOME            = .
+RANDFILE        = $ENV::HOME/.rnd
+
+####################################################################
+[ req ]
+default_bits       = 2048
+default_keyfile    = server.key
+distinguished_name = server_distinguished_name
+req_extensions     = server_req_extensions
+string_mask        = utf8only
+
+####################################################################
+[ server_distinguished_name ]
+countryName         = Country Name (2 letter code)
+countryName_default = US
+
+stateOrProvinceName         = State or Province Name (full name)
+stateOrProvinceName_default = AZ
+
+localityName         = Locality Name (eg, city)
+localityName_default = Phoenix
+
+organizationName            = Organization Name (eg, company)
+organizationName_default    = Octo Consulting
+
+organizationalUnitName         = Organizational Unit (eg, division)
+organizationalUnitName_default = Product Team Test Server
+
+commonName         = Common Name (e.g. server FQDN or YOUR name)
+commonName_default = localhost
+
+emailAddress         = Email Address
+emailAddress_default =
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier = hash
+basicConstraints     = CA:FALSE
+keyUsage             = digitalSignature, keyEncipherment
+subjectAltName       = @alternate_names
+nsComment            = "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+
+DNS.1  = localhost
+DNS.2 = keycloak
+DNS.3 = app
+DNS.4 = graphql
+DNS.5 = parser
